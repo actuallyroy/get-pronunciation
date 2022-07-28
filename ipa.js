@@ -43,7 +43,6 @@ function fadeElem(elem){
     let opc = 1.5;
     let i = setInterval(() => {
         opc-=0.01;
-        console.log(opc);
         if(opc <= 0){
             elem.style.display = "none";
             clearInterval(i);
@@ -52,10 +51,8 @@ function fadeElem(elem){
         }
     }, 10)
 }
-console.log(toast);
 async function copyText(){
     if(wordIPA.innerHTML != ""){
-        console.log("Here")
         navigator.clipboard.writeText(wordIPA.innerHTML)
         .then(
             fadeElem(document.querySelector(".toast"))
