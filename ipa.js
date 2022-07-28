@@ -8,9 +8,10 @@ async function readClipboard(){
     })
 }
 
-document.addEventListener('visibilitychange', function(e) {
+queryInput.onfocus = () => {
+    console.log("here")
     readClipboard();
-});
+};
 const options = {
     method: 'GET',
     headers: {
