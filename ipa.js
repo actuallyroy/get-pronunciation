@@ -4,6 +4,7 @@ async function readClipboard(){
     await navigator.clipboard.readText()
     .then(text =>{
         queryInput.value = text;
+        document.querySelector("#getBtn").click();
     })
 }
 
