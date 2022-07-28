@@ -1,5 +1,15 @@
 let toast = document.querySelector(".toast");
+let queryInput = document.querySelector("#queryWord");
+async function readClipboard(){
+    await navigator.clipboard.readText()
+    .then(text =>{
+        queryInput.value = text;
+    })
+}
 
+document.addEventListener('visibilitychange', function(e) {
+    readClipboard();
+});
 const options = {
     method: 'GET',
     headers: {
@@ -9,7 +19,7 @@ const options = {
 };
 let wordIPA = document.querySelector('#wordIPA');
 document.querySelector("#getBtn").onclick = ()=>{
-    let word = document.querySelector("#queryWord").value;
+    let word = queryInput.value;
     fetch(`https://wordsapiv1.p.rapidapi.com/words/${word}/pronunciation`, options)
     .then(response => response.json())
         .then(response => {
