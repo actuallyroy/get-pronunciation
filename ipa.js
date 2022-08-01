@@ -25,7 +25,12 @@ document.querySelector("#getBtn").onclick = ()=>{
     fetch(`https://wordsapiv1.p.rapidapi.com/words/${word}/pronunciation`, options)
     .then(response => response.json())
         .then(response => {
-            wordIPA.innerHTML = `/${response.pronunciation.all}/`
+            console.log(response);
+            if(response.pronunciation.all){
+                wordIPA.innerHTML = `/${response.pronunciation.all}/`
+            }else{
+                wordIPA.innerHTML = `/${response.pronunciation}/`
+            }
         })
         .catch(err => console.error(
             toast.innerHTML = 'Try a word or phrase',
@@ -52,6 +57,7 @@ function fadeElem(elem){
         }
     }, 10)
 }
+
 async function copyText(){
     if(wordIPA.innerHTML != ""){
         navigator.clipboard.writeText(wordIPA.innerHTML)
@@ -61,5 +67,8 @@ async function copyText(){
     }
 }
 
+console.log(words["stays"]);
 
-
+function getBaseWord(word) {
+    
+}
