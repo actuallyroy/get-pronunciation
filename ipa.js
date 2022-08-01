@@ -66,9 +66,3 @@ async function copyText(){
         )
     }
 }
-
-console.log(words["stays"]);
-
-function getBaseWord(word) {
-    
-}
