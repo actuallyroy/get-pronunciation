@@ -28,8 +28,14 @@ document.querySelector("#getBtn").onclick = ()=>{
             console.log(response);
             if(response.pronunciation.all){
                 wordIPA.innerHTML = `/${response.pronunciation.all}/`
-            }else{
-                wordIPA.innerHTML = `/${response.pronunciation}/`
+            }else if(res.pronunciation.adjective){
+                wordIPA.innerHTML = `/${response.pronunciation.adjective}/`
+            } else if (res.pronunciation.noun) {
+                wordIPA.innerHTML = `/${response.pronunciation.noun}/`;
+            } else if (res.pronunciation.verb) {
+                wordIPA.innerHTML = `/${response.pronunciation.verb}/`;
+            } else {
+                wordIPA.innerHTML = `/${response.pronunciation}/`;
             }
         })
         .catch(err => console.error(
